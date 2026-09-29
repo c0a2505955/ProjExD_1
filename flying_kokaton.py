@@ -32,12 +32,12 @@ def main():
         if key_lst[pg.K_RIGHT]:
             x+=1
 
+        x-=1
+        if key_lst[pg.K_RIGHT]:
+            x+=1
+
         if x !=0 or y !=0:
             kk_rct.move_ip(x, y)
-
-        kk_rct.move_ip(-1, 0)
-        if key_lst[pg.K_RIGHT]:
-            kk_rct.move_ip(+1, 0)
 
         x = tmr%3200 #練習9:ループ
         screen.blit(bg_img, [-x, 0]) #練習5:背景画像を右から
