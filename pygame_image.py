@@ -10,6 +10,7 @@ def main():
     screen = pg.display.set_mode((800, 600))
     clock  = pg.time.Clock()
     bg_img = pg.image.load("fig/pg_bg.jpg")
+    bg_img2 = pg.transform.flip(bg_img, True, False) #練習8:左右反転した背景画像surface
     kk_img = pg.image.load("fig/3.png") #練習3:こうかとん画像のsurface作成
     kk_img = pg.transform.flip(kk_img, True, False) #練習3:こうかとん反転
     tmr = 0
@@ -17,8 +18,10 @@ def main():
         for event in pg.event.get():
             if event.type == pg.QUIT: return
 
-        x = -tmr
-        screen.blit(bg_img, [x, 0]) #練習5:背景画像を右から
+        x = tmr%3200 #練習9:ループ
+        screen.blit(bg_img, [-x, 0]) #練習5:背景画像を右から
+        screen.blit(bg_img2, [-x+1600, 0]) #練習7:背景画像を付け
+        screen.blit(bg_img2, [-x+3200, 0]) #練習9:3枚目の背景画像
         screen.blit(kk_img, [300, 200]) #練習4:こうかとん貼り付け
         pg.display.update()
         tmr += 1        
